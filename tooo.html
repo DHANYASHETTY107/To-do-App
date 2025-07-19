@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>To Do App</title>
+                <style>
+                                body{
+                                                font-family: Arial;
+                                                text-align: center;
+                                                margin-top: 50px;
+                                }
+                                ul{
+                                                list-style: none;
+                                                padding:0%;
+                                }
+                                li{
+                                              margin: 10px 0; 
+                                }
+                                .Completed{
+                                                text-decoration: line-through;
+                                
+                                }
+                                button{
+                                                margin-left: 10px;
+                                }
+                </style>
+</head>
+<body>
+                <h1> TO DO APP</h1>
+                <input id="taskInput" type="text" placeholder="Enter a task">
+                <button onclick="addTask()">Add a task</button>
+                <ul id="taskList"></ul>
+
+                <script>
+                                function addTask(){
+                                                const taskText=document.getElementById('taskInput').value
+                                                if(taskText==="") return;
+
+                                                const li=document.createElement('li')
+
+                                                const checkbox=document.createElement('input')
+                                                checkbox.type='checkbox'
+                                                checkbox.onchange=()=>
+                                {
+                                                li.classList.toggle('Completed')
+                                }
+
+
+                                                const span=document.createElement('span')
+                                                span.textContent=taskText
+
+                                                const delBtn=document.createElement('button')
+                                                delBtn.textContent='Delete'
+                                                delBtn.onclick=()=>li.remove()
+
+                                                li.appendChild(checkbox)
+                                                li.appendChild(span)
+                                                li.appendChild(delBtn)
+
+                                                document.getElementById('taskInput').value="";
+                                                document.getElementById('taskList').appendChild(li);
+                                                
+
+
+                                                
+                                }
+                </script>
+
+                
+</body>
+</html>
